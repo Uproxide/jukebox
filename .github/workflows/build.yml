@@ -23,6 +23,9 @@ jobs:
           - name: Android64
             os: ubuntu-22.04
             target: Android64
+          - name: iOS
+            os: macos-latest
+            target: iOS
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -37,6 +40,8 @@ jobs:
           export-pdb: true
           combine: true
           target: ${{ matrix.config.target }}
+          cli: nightly
+          sdk: nightly
           build-config: ${{ matrix.config.build-type || 'Release' }}
 
   package:
